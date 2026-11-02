@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DinoPédia: explore a vida, a ciência e os ecossistemas da era dos dinossauros." />
+    <title>DinoPédia | Descubra a história da vida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.170.0/build/three.module.js"}}</script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="DinoPédia início"><span class="brand-mark">D</span><span>Dino<span class="brand-accent">Pédia</span></span></a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="active" href="#explorar">Explorar</a>
+        <a href="#linha-do-tempo">Linha do tempo</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#comunidade">Comunidade</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" aria-label="Alternar tema" id="theme-toggle">◐</button>
+        <button class="profile-button"><span class="avatar">GC</span><span class="profile-name">Meu espaço</span><span>⌄</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="explorar">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> A ciência da vida em movimento</p>
+          <h1>O passado<br /><em>ganha vida.</em></h1>
+          <p class="hero-text">Explore milhões de anos de história, conheça espécies fascinantes e descubra como a vida encontrou um caminho.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#catalogo">Começar a explorar <span>→</span></a><a class="text-link" href="#linha-do-tempo">Ver linha do tempo <span>↗</span></a></div>
+          <div class="hero-stats"><div><strong>1.240+</strong><span>espécies catalogadas</span></div><div><strong>4.6 bi</strong><span>anos de história</span></div><div><strong>100%</strong><span>curadoria científica</span></div></div>
+        </div>
+        <div class="hero-art" aria-label="Ilustração de um tiranossauro">
+          <div class="sun"></div><div class="hero-orbit"></div><div class="hero-label label-top">MESOZOICO <span>• 252–66 Ma</span></div>
+          <div class="dino-silhouette">🦖</div><div class="hero-label label-bottom">Tyrannosaurus rex <span>• Cretáceo Superior</span></div>
+        </div>
+      </section>
+
+      <section class="section catalog-section" id="catalogo">
+        <div class="section-heading"><div><p class="eyebrow">Catálogo científico</p><h2>Encontre sua próxima <em>descoberta.</em></h2></div><a class="text-link" href="#catalogo">Ver todas as espécies ↗</a></div>
+        <div class="search-bar"><span>⌕</span><input id="search" type="search" placeholder="Busque por nome, período, dieta ou região..." aria-label="Buscar espécies" /><kbd>⌘ K</kbd></div>
+        <div class="filter-row" role="group" aria-label="Filtros de espécies"><button class="filter active" data-filter="Todos">Todos <span>1.240</span></button><button class="filter" data-filter="Carnívoro">Carnívoros <span>342</span></button><button class="filter" data-filter="Herbívoro">Herbívoros <span>687</span></button><button class="filter" data-filter="Voador">Voadores <span>84</span></button><button class="filter" data-filter="Marinho">Marinhos <span>127</span></button></div>
+        <div class="species-grid" id="species-grid"></div><p class="empty-state" id="empty-state" hidden>Nenhuma espécie encontrada. Tente outro termo.</p>
+      </section>
+
+      <section class="viewer-section" id="modelos-3d">
+        <div class="section-heading"><div><p class="eyebrow">Laboratório 3D</p><h2>Veja qualquer dinossauro<br /><em>ganhar forma.</em></h2></div><p class="viewer-note">Modelos anatômicos estilizados gerados em WebGL a partir do catálogo científico.</p></div>
+        <div class="model-gallery" aria-label="Modelos reais disponíveis"><button class="gallery-model active" data-model="Tyrannosaurus rex">T. rex</button><button class="gallery-model" data-model="Velociraptor">Velociraptor</button><button class="gallery-model" data-model="Triceratops">Triceratops</button><button class="gallery-model" data-model="Diplodocus">Diplodocus</button><button class="gallery-model" data-model="Parasaurolophus">Parasaurolophus</button><button class="gallery-model" data-model="Stegosaurus">Stegosaurus</button><button class="gallery-model" data-model="Apatosaurus">Apatosaurus</button></div>
+        <div class="viewer-layout"><div class="viewer-canvas" id="dino-canvas"><span>Carregando modelo 3D...</span><span class="viewer-badge">GLB REAL</span></div><div class="viewer-info"><p class="eyebrow">Espécie selecionada</p><h3 id="viewer-name">Tyrannosaurus rex</h3><p id="viewer-description">Escolha uma espécie no catálogo para explorar seu modelo tridimensional.</p><p class="model-license" id="model-license">Modelo real licenciado · Poly Pizza / CC0</p><div class="viewer-styles"><span>Ambiente</span><button class="style-choice active" data-style="natural">Natural</button><button class="style-choice" data-style="amber">Âmbar</button><button class="style-choice" data-style="night">Noite</button><button class="style-choice" data-style="fossil">Fóssil</button></div><button class="button button-primary" id="viewer-spin">Alternar rotação <span>↻</span></button></div></div>
+      </section>
+
+      <section class="timeline-section" id="linha-do-tempo">
+        <div class="section-heading"><div><p class="eyebrow">Uma história de 4.6 bilhões de anos</p><h2>Viaje pelo <em>tempo profundo.</em></h2></div><div class="timeline-controls"><button id="timeline-prev" aria-label="Período anterior">←</button><button id="timeline-next" aria-label="Próximo período">→</button></div></div>
+        <div class="timeline-track"><div class="timeline-line"></div><button class="era active" data-era="Permiano"><span class="era-dot"></span><strong>Permiano</strong><small>299–252 Ma</small></button><button class="era" data-era="Triássico"><span class="era-dot"></span><strong>Triássico</strong><small>252–201 Ma</small></button><button class="era" data-era="Jurássico"><span class="era-dot"></span><strong>Jurássico</strong><small>201–145 Ma</small></button><button class="era" data-era="Cretáceo"><span class="era-dot"></span><strong>Cretáceo</strong><small>145–66 Ma</small></button><button class="era" data-era="Cenozoico"><span class="era-dot"></span><strong>Cenozoico</strong><small>66 Ma–hoje</small></button></div>
+        <div class="era-detail"><div><p class="era-kicker" id="era-kicker">ERA DOS RÉPTEIS</p><h3 id="era-title">A grande transformação</h3><p id="era-description">Depois da maior extinção da história, a vida se recuperou. Os primeiros dinossauros surgiram pequenos, mas o mundo estava prestes a mudar para sempre.</p><a class="text-link" href="#catalogo">Explorar este período ↗</a></div><div class="era-visual"><span id="era-number">01</span><span class="era-emoji" id="era-emoji">🌋</span></div></div>
+      </section>
+
+      <section class="quiz-section" id="quiz"><div class="quiz-card"><div class="quiz-icon">✦</div><p class="eyebrow">Aprenda brincando</p><h2>Você seria um bom<br /><em>paleontólogo?</em></h2><p>Teste seus conhecimentos em 5 perguntas e descubra seu perfil de explorador.</p><button class="button button-light" id="quiz-start">Começar o quiz <span>→</span></button><div class="quiz-progress"><span></span><span></span><span></span><span></span><span></span></div></div><div class="quiz-aside"><span class="quiz-aside-number">05</span><strong>perguntas rápidas</strong><span>sem pegadinhas. talvez.</span></div></section>
+
+      <section class="community-section" id="comunidade"><p class="eyebrow">Feito para descobrir junto</p><div class="community-grid"><div><h2>Conhecimento não<br /><em>é fóssil.</em></h2><p>Converse com educadores, curiosos e especialistas apaixonados pelo passado do nosso planeta.</p><a class="button button-primary" href="#comunidade">Conhecer a comunidade <span>→</span></a></div><div class="community-card"><div class="quote-mark">“</div><p>O que mais gosto na DinoPédia é poder navegar entre uma explicação simples e a pesquisa original. É como ter um museu no bolso.</p><div class="quote-author"><span class="avatar coral">AM</span><span><strong>Ana Martins</strong><small>Professora de Ciências · São Paulo</small></span></div></div></div></section>
+    </main>
+    <footer><a class="brand" href="#"><span class="brand-mark">D</span><span>Dino<span class="brand-accent">Pédia</span></span></a><span>Aprender é uma forma de viajar no tempo.</span><span>© 2026 DinoPédia</span></footer>
+    <dialog id="quiz-dialog"><div class="dialog-inner"><button class="dialog-close" id="quiz-close" aria-label="Fechar">×</button><p class="eyebrow">Quiz do explorador</p><div id="quiz-content"></div></div></dialog>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
